@@ -21,12 +21,12 @@
     [super viewDidLoad];
     self.menu = [[CTCyclePageMenu alloc] initWithFrame:CGRectMake(0, 22, [UIScreen mainScreen].bounds.size.width, 44)];
     [self.menu registerDefaultClass];
-    self.menu.titles = @[@"title1",@"title2",@"title3"];
+    self.menu.titles = @[@"title1",@"title2",@"title3",@"title4",@"title5",@"title6"];
     [self.view addSubview:self.menu];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.menu selectSection:1 animation:YES];
+    [self.menu selectSection:4 animation:YES];
 }
 
 - (void)cyclePageMenu:(CTCyclePageMenu *)cyclePageMenu didSelectItemAtIndexPath:(NSIndexPath *)indexPath{

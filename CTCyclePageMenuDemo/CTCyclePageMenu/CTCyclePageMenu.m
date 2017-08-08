@@ -79,6 +79,7 @@
         [self reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+            [self p_collectionView:self.collectionView didSelectItemAtIndexpath:[NSIndexPath indexPathForItem:0 inSection:0] animation:NO];
         });
     }
 }
@@ -194,6 +195,7 @@
 }
 
 - (void)selectSection:(NSInteger)section animation:(BOOL)animation{
+    [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:section] animated:animation scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     [self p_collectionView:self.collectionView didSelectItemAtIndexpath:[NSIndexPath indexPathForItem:0 inSection:section] animation:animation];
 }
 

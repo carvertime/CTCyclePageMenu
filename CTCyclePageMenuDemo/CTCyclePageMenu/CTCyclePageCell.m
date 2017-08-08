@@ -36,7 +36,7 @@
 - (void)setSelected:(BOOL)selected{
     [super setSelected:selected];
     if (selected) {
-        self.titleLb.textColor = [UIColor redColor];
+        self.titleLb.textColor = [UIColor colorWithRed:252/255.0 green:87/255.0 blue:93/255.0 alpha:1];
     } else {
         self.titleLb.textColor = [UIColor grayColor];
     }
