@@ -118,10 +118,6 @@
     return separatorView;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self layoutSubviews];
-}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self p_collectionView:collectionView didSelectItemAtIndexpath:indexPath animation:YES];
 }
