@@ -1,5 +1,5 @@
 //
-//  Demo3VC.h
+//  ViewController.h
 //  CTCyclePageMenuDemo
 //
 //  Created by wenjie on 2017/8/9.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Demo3VC : UIViewController
+@interface ViewController : UIViewController
 
 @end

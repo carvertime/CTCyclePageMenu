@@ -23,7 +23,6 @@
     self.title = @"CTCyclePageMenu Example List";
     self.dataSource = @[@"竖直菜单", @"水平菜单"].mutableCopy;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    
 }
 
 - (void)didReceiveMemoryWarning {

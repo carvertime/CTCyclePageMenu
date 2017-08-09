@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTCyclePageMenuProtocol.h"
 
-@interface CTVerticalSlideView : UIView
+@interface CTVerticalSlideView : UIView<CTCyclePageSlideViewProtocol>
 
 @end

@@ -20,10 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"水平菜单";
+    self.view.backgroundColor = [UIColor whiteColor];
     self.menu = [[CTCyclePageMenu alloc] initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, 44)];
-    [self.menu registerCellClass:NSClassFromString(@"CTHorizontalCell")];
-    [self.menu registerSlideViewClass:NSClassFromString(@"CTHorizontalSlideView")];
-    [self.menu registerSeparatorViewClass:NSClassFromString(@"CTHorizontalSeparatorView")];
+    [self.menu registerCellClass:[NSClassFromString(@"CTHorizontalCell") class]];
+    [self.menu registerSlideViewClass:[NSClassFromString(@"CTHorizontalSlideView") class]];
+    [self.menu registerSeparatorViewClass:[NSClassFromString(@"CTHorizontalSeparatorView") class]];
     self.menu.titles = @[@"title1", @"title2", @"title3", @"title4", @"title5", @"title6"];
     [self.view addSubview:self.menu];
 }

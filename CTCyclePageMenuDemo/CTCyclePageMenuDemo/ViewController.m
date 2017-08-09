@@ -1,21 +1,22 @@
 //
-//  Demo3VC.m
+//  ViewController.m
 //  CTCyclePageMenuDemo
 //
 //  Created by wenjie on 2017/8/9.
 //  Copyright © 2017年 Demo. All rights reserved.
 //
 
-#import "Demo3VC.h"
+#import "ViewController.h"
 
-@interface Demo3VC ()
+@interface ViewController ()
 
 @end
 
-@implementation Demo3VC
+@implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
 

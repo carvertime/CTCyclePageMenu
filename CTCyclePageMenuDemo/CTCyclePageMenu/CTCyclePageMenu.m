@@ -40,6 +40,8 @@
     
     [super layoutSubviews];
     
+    [self.collectionView setContentInset:UIEdgeInsetsZero];
+    
     UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
     
     CGSize slideSize = CGSizeZero;
@@ -131,20 +133,15 @@
     
     self.selectedSection = indexPath.section;
     
-    if (self.handleAction) {
-        self.handleAction(self, indexPath);
-    }
-    
-    if ([self.delegate respondsToSelector:@selector(cyclePageMenu:didSelectItemAtIndexPath:)]) {
-        [self.delegate cyclePageMenu:self didSelectItemAtIndexPath:indexPath];
-    }
-    
     if (animation) {
         [UIView animateWithDuration:0.25 animations:^{
             [self layoutSubviews];
+        } completion:^(BOOL finished) {
+            [self handleActionIndexPath:indexPath];
         }];
     } else {
         [self layoutSubviews];
+        [self handleActionIndexPath:indexPath];
     }
 
     if (self.lastSelectedSection != indexPath.section) {
@@ -153,6 +150,15 @@
 
     self.lastSelectedSection = indexPath.section;
     
+}
+
+- (void)handleActionIndexPath:(NSIndexPath *)indexPath{
+    if (self.handleAction) {
+        self.handleAction(self, indexPath);
+    }
+    if ([self.delegate respondsToSelector:@selector(cyclePageMenu:didSelectItemAtIndexPath:)]) {
+        [self.delegate cyclePageMenu:self didSelectItemAtIndexPath:indexPath];
+    }
 }
 
 - (void)registerCellClass:(Class)cellClass{

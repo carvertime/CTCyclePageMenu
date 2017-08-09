@@ -10,12 +10,16 @@
 
 @implementation CTVerticalSeparatorView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
+    }
+    return self;
 }
-*/
+
++ (CGSize)separatorSizeWithData:(id)aData collectionViewSize:(CGSize)collectionViewSize{
+    return CGSizeMake(20, 2);
+}
+
 
 @end

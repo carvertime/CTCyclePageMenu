@@ -25,10 +25,7 @@
 		69F446EB1F3AF14A00DAF682 /* CTHorizontalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F446EA1F3AF14A00DAF682 /* CTHorizontalCell.m */; };
 		69F446EE1F3AF17700DAF682 /* CTHorizontalSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F446ED1F3AF17700DAF682 /* CTHorizontalSlideView.m */; };
 		69F446F11F3AF18C00DAF682 /* CTHorizontalSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F446F01F3AF18C00DAF682 /* CTHorizontalSeparatorView.m */; };
-		69F447041F3AFA0100DAF682 /* CTCyclePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F446FF1F3AFA0100DAF682 /* CTCyclePageCell.m */; };
-		69F447051F3AFA0100DAF682 /* CTCyclePageSeparatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F447011F3AFA0100DAF682 /* CTCyclePageSeparatorView.m */; };
-		69F447061F3AFA0100DAF682 /* CTCyclePageSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F447031F3AFA0100DAF682 /* CTCyclePageSlideView.m */; };
-		69F4470A1F3AFA3C00DAF682 /* Demo3VC.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F447091F3AFA3C00DAF682 /* Demo3VC.m */; };
+		69F4470D1F3B06A400DAF682 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F4470C1F3B06A400DAF682 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,14 +83,8 @@
 		69F446ED1F3AF17700DAF682 /* CTHorizontalSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHorizontalSlideView.m; sourceTree = "<group>"; };
 		69F446EF1F3AF18C00DAF682 /* CTHorizontalSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHorizontalSeparatorView.h; sourceTree = "<group>"; };
 		69F446F01F3AF18C00DAF682 /* CTHorizontalSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHorizontalSeparatorView.m; sourceTree = "<group>"; };
-		69F446FE1F3AFA0100DAF682 /* CTCyclePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCyclePageCell.h; sourceTree = "<group>"; };
-		69F446FF1F3AFA0100DAF682 /* CTCyclePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCyclePageCell.m; sourceTree = "<group>"; };
-		69F447001F3AFA0100DAF682 /* CTCyclePageSeparatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCyclePageSeparatorView.h; sourceTree = "<group>"; };
-		69F447011F3AFA0100DAF682 /* CTCyclePageSeparatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCyclePageSeparatorView.m; sourceTree = "<group>"; };
-		69F447021F3AFA0100DAF682 /* CTCyclePageSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCyclePageSlideView.h; sourceTree = "<group>"; };
-		69F447031F3AFA0100DAF682 /* CTCyclePageSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCyclePageSlideView.m; sourceTree = "<group>"; };
-		69F447081F3AFA3C00DAF682 /* Demo3VC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo3VC.h; sourceTree = "<group>"; };
-		69F447091F3AFA3C00DAF682 /* Demo3VC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo3VC.m; sourceTree = "<group>"; };
+		69F4470B1F3B06A400DAF682 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		69F4470C1F3B06A400DAF682 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,11 +150,12 @@
 				6976292E1F384DED00551BC3 /* CTCyclePageMenu */,
 				69F446CE1F3AEBC500DAF682 /* Demo1 */,
 				69F446D11F3AEBC500DAF682 /* Demo2 */,
-				69F446F21F3AF9DF00DAF682 /* Demo3 */,
 				699284B01F3403C100593E30 /* AppDelegate.h */,
 				699284B11F3403C100593E30 /* AppDelegate.m */,
 				69F446D71F3AECA000DAF682 /* ExampleListVC.h */,
 				69F446D81F3AECA000DAF682 /* ExampleListVC.m */,
+				69F4470B1F3B06A400DAF682 /* ViewController.h */,
+				69F4470C1F3B06A400DAF682 /* ViewController.m */,
 				699284B61F3403C100593E30 /* Main.storyboard */,
 				699284B91F3403C100593E30 /* Assets.xcassets */,
 				699284BB1F3403C100593E30 /* LaunchScreen.storyboard */,
@@ -257,37 +249,6 @@
 			children = (
 				69F446DD1F3AEFBC00DAF682 /* Demo2VC.h */,
 				69F446DE1F3AEFBC00DAF682 /* Demo2VC.m */,
-			);
-			path = VC;
-			sourceTree = "<group>";
-		};
-		69F446F21F3AF9DF00DAF682 /* Demo3 */ = {
-			isa = PBXGroup;
-			children = (
-				69F447071F3AFA2200DAF682 /* VC */,
-				69F446FD1F3AFA0100DAF682 /* CustomView */,
-			);
-			path = Demo3;
-			sourceTree = SOURCE_ROOT;
-		};
-		69F446FD1F3AFA0100DAF682 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
-				69F446FE1F3AFA0100DAF682 /* CTCyclePageCell.h */,
-				69F446FF1F3AFA0100DAF682 /* CTCyclePageCell.m */,
-				69F447001F3AFA0100DAF682 /* CTCyclePageSeparatorView.h */,
-				69F447011F3AFA0100DAF682 /* CTCyclePageSeparatorView.m */,
-				69F447021F3AFA0100DAF682 /* CTCyclePageSlideView.h */,
-				69F447031F3AFA0100DAF682 /* CTCyclePageSlideView.m */,
-			);
-			path = CustomView;
-			sourceTree = "<group>";
-		};
-		69F447071F3AFA2200DAF682 /* VC */ = {
-			isa = PBXGroup;
-			children = (
-				69F447081F3AFA3C00DAF682 /* Demo3VC.h */,
-				69F447091F3AFA3C00DAF682 /* Demo3VC.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -428,21 +389,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69F4470D1F3B06A400DAF682 /* ViewController.m in Sources */,
 				69F446CC1F3AEB6200DAF682 /* CTCyclePageFlowLayout.m in Sources */,
-				69F447061F3AFA0100DAF682 /* CTCyclePageSlideView.m in Sources */,
 				69F446E81F3AF11500DAF682 /* CTVerticalSeparatorView.m in Sources */,
 				69F446F11F3AF18C00DAF682 /* CTHorizontalSeparatorView.m in Sources */,
 				699284B21F3403C100593E30 /* AppDelegate.m in Sources */,
-				69F4470A1F3AFA3C00DAF682 /* Demo3VC.m in Sources */,
 				69F446EE1F3AF17700DAF682 /* CTHorizontalSlideView.m in Sources */,
 				69F446CD1F3AEB6200DAF682 /* CTCyclePageMenu.m in Sources */,
 				69F446D91F3AECA000DAF682 /* ExampleListVC.m in Sources */,
 				69F446E21F3AF0AE00DAF682 /* CTVerticalCell.m in Sources */,
 				69F446E51F3AF0E300DAF682 /* CTVerticalSlideView.m in Sources */,
 				699284AF1F3403C100593E30 /* main.m in Sources */,
-				69F447041F3AFA0100DAF682 /* CTCyclePageCell.m in Sources */,
 				69F446EB1F3AF14A00DAF682 /* CTHorizontalCell.m in Sources */,
-				69F447051F3AFA0100DAF682 /* CTCyclePageSeparatorView.m in Sources */,
 				69F446DC1F3AEFAF00DAF682 /* Demo1VC.m in Sources */,
 				69F446DF1F3AEFBC00DAF682 /* Demo2VC.m in Sources */,
 			);

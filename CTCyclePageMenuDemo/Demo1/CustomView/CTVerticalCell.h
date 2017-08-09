@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CTCyclePageMenuProtocol.h"
 
-@interface CTVerticalCell : UICollectionViewCell
+@interface CTVerticalCell : UICollectionViewCell<CTCyclePageCellProtocol>
 
 @end
