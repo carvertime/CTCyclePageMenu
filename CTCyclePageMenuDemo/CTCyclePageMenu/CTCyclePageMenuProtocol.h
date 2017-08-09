@@ -32,5 +32,6 @@
 @protocol CTCyclePageSlideViewProtocol <NSObject>
 
 - (CGFloat)cyclePageSlideViewHeight;
+- (CGFloat)cyclePageSlideViewWidth;
 
 @end

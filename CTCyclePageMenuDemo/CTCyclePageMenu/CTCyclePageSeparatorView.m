@@ -18,7 +18,7 @@
 }
 
 + (CGSize)separatorWidthWithCellData:(id)aData collectionViewSize:(CGSize)collectionViewSize{
-    return CGSizeMake(1, collectionViewSize.height*0.5);
+    return CGSizeMake(1, 20);
 }
 
 - (void)setupUI{

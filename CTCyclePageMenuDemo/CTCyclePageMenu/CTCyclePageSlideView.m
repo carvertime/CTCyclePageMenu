@@ -21,4 +21,8 @@
     return 2;
 }
 
+- (CGFloat)cyclePageSlideViewWidth{
+    return 2;
+}
+
 @end

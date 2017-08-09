@@ -45,14 +45,27 @@
     
     [super layoutSubviews];
     
-    CGFloat slideViewHeight = 0.f;
-    if ([self.cyclePageSlideView respondsToSelector:@selector(cyclePageSlideViewHeight)]) {
-        slideViewHeight = [self.cyclePageSlideView cyclePageSlideViewHeight];
+    if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        CGFloat slideViewHeight = 0.f;
+        if ([self.cyclePageSlideView respondsToSelector:@selector(cyclePageSlideViewHeight)]) {
+            slideViewHeight = [self.cyclePageSlideView cyclePageSlideViewHeight];
+        }
+        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - slideViewHeight);
+        
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+        self.cyclePageSlideView.frame = CGRectMake(cell.frame.origin.x-self.collectionView.contentOffset.x, self.frame.size.height - slideViewHeight, cell.frame.size.width, slideViewHeight);
+    } else {
+        CGFloat slideViewWidth = 0.f;
+        if ([self.cyclePageSlideView respondsToSelector:@selector(cyclePageSlideViewWidth)]) {
+            slideViewWidth = [self.cyclePageSlideView cyclePageSlideViewWidth];
+        }
+        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width - slideViewWidth, self.frame.size.height);
+        
+        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+        self.cyclePageSlideView.frame = CGRectMake(self.collectionView.frame.size.width - slideViewWidth, cell.frame.origin.y-self.collectionView.contentOffset.y, slideViewWidth, cell.frame.size.height);
     }
-    self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - slideViewHeight);
     
-    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
-    self.cyclePageSlideView.frame = CGRectMake(cell.frame.origin.x-self.collectionView.contentOffset.x, self.frame.size.height - slideViewHeight, cell.frame.size.width, slideViewHeight);
+    
     
 }
 
@@ -124,7 +137,11 @@
 
 - (void)p_collectionView:(UICollectionView *)collectionView didSelectItemAtIndexpath:(NSIndexPath *)indexPath animation:(BOOL)animation{
     
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    } else {
+        [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+    }
     
     self.selectedSection = indexPath.section;
     
@@ -206,6 +223,7 @@
         _collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.showsVerticalScrollIndicator = NO;
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
     }
@@ -218,6 +236,26 @@
         _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     return _flowLayout;
+}
+
+- (void)setScrollDirection:(UICollectionViewScrollDirection)scrollDirection{
+    _scrollDirection = scrollDirection;
+    self.flowLayout.scrollDirection = scrollDirection;
+}
+
+- (void)setShowsHorizontalScrollIndicator:(BOOL)showsHorizontalScrollIndicator{
+    _showsHorizontalScrollIndicator = showsHorizontalScrollIndicator;
+    self.collectionView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator;
+}
+
+- (void)setShowsVerticalScrollIndicator:(BOOL)showsVerticalScrollIndicator{
+    _showsVerticalScrollIndicator = showsVerticalScrollIndicator;
+    self.collectionView.showsVerticalScrollIndicator = showsVerticalScrollIndicator;
+}
+
+- (void)setIndicatorStyle:(UIScrollViewIndicatorStyle)indicatorStyle{
+    _indicatorStyle = indicatorStyle;
+    self.collectionView.indicatorStyle = indicatorStyle;
 }
 
 

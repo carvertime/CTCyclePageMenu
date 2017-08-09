@@ -25,6 +25,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+
     self.titleLb.frame = self.bounds;
 }
 
@@ -43,7 +44,7 @@
 }
 
 + (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize spaces:(CGFloat)spaces indexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, collectionViewSize.height);
+    return CGSizeMake(100, 40);
 }
 
 

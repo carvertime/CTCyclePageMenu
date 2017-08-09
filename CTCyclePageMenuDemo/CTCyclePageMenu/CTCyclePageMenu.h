@@ -15,6 +15,12 @@
 @property (nonatomic, copy) void(^handleAction)(CTCyclePageMenu *cyclePageMenu, NSIndexPath *indexPath);
 @property (nonatomic, assign, readonly) NSInteger selectedSection;
 @property (nonatomic, strong) NSArray *titles;
+@property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
+@property (nonatomic, assign) BOOL automaticallyAdjustsMenu;
+@property (nonatomic, assign) BOOL showsHorizontalScrollIndicator;
+@property (nonatomic, assign) BOOL showsVerticalScrollIndicator;
+@property (nonatomic, assign) UIScrollViewIndicatorStyle indicatorStyle;
+
 
 - (void)registerCellClass:(Class)cellClass;
 
