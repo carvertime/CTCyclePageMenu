@@ -15,7 +15,6 @@
 @optional
 - (void)cyclePageMenu:(CTCyclePageMenu *)cyclePageMenu didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
-
 @end
 
 @protocol CTCyclePageCellProtocol <NSObject>
