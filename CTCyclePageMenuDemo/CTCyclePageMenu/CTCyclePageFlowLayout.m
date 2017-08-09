@@ -15,7 +15,6 @@
 @property (nonatomic, strong) NSMutableDictionary *cellLayoutInfos;
 @property (nonatomic, strong) NSMutableDictionary *footerLayoutInfos;
 @property (nonatomic, assign) CGFloat currentLength;
-@property (nonatomic, weak) CTCyclePageMenu <UICollectionViewDelegateFlowLayout>*delegate;
 
 @end
 
@@ -27,7 +26,6 @@
     
     self.cellLayoutInfos = [NSMutableDictionary dictionary];
     self.footerLayoutInfos = [NSMutableDictionary dictionary];
-    self.delegate = (id)self.collectionView.delegate;
     
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
         [self prepareLayoutHorizontal];
@@ -39,16 +37,18 @@
 
 - (void)prepareLayoutVertical{
     
+    CTCyclePageMenu <UICollectionViewDelegateFlowLayout>*delegate = (id)self.collectionView.delegate;
+    
     CGFloat totalHeigth = 0;
     NSInteger sectionNum = [self.collectionView numberOfSections];
     
-    CGSize footerSize = [self.delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:0];
+    CGSize footerSize = [delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:0];
     if (sectionNum == 1) {
         footerSize = CGSizeZero;
     }
     
     for (NSInteger i = 0; i < sectionNum; i++) {
-        CGSize size = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
+        CGSize size = [delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
         if (i == sectionNum - 1) {
             totalHeigth += size.height;
         } else {
@@ -63,8 +63,8 @@
     
     for (NSInteger i = 0; i < sectionNum; i++) {
         UICollectionViewLayoutAttributes *cellAttribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-        CGSize cellSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-        if (totalHeigth > collectionViewHeight || !self.delegate.automaticallyAdjustsMenu) {
+        CGSize cellSize = [delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
+        if (totalHeigth > collectionViewHeight || !delegate.automaticallyAdjustsMenu) {
             cellHeight = cellSize.height;
         }
         cellAttribute.frame = CGRectMake((collectionViewWidth - cellSize.width) * 0.5, self.currentLength, cellSize.width, cellHeight);
@@ -87,16 +87,18 @@
 
 - (void)prepareLayoutHorizontal{
     
+    CTCyclePageMenu <UICollectionViewDelegateFlowLayout>*delegate = (id)self.collectionView.delegate;
+    
     CGFloat totalWidth = 0;
     NSInteger sectionNum = [self.collectionView numberOfSections];
     
-    CGSize footerSize = [self.delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:0];
+    CGSize footerSize = [delegate collectionView:self.collectionView layout:self referenceSizeForFooterInSection:0];
     if (sectionNum == 1) {
         footerSize = CGSizeZero;
     }
     
     for (NSInteger i = 0; i < sectionNum; i++) {
-        CGSize size = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
+        CGSize size = [delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
         if (i == sectionNum - 1) {
             totalWidth += size.width;
         } else {
@@ -111,8 +113,8 @@
     
     for (NSInteger i = 0; i < sectionNum; i++) {
         UICollectionViewLayoutAttributes *cellAttribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-        CGSize cellSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-        if (totalWidth > collectionViewWidth || !self.delegate.automaticallyAdjustsMenu) {
+        CGSize cellSize = [delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
+        if (totalWidth > collectionViewWidth || !delegate.automaticallyAdjustsMenu) {
             cellWidth = cellSize.width;
         }
         cellAttribute.frame = CGRectMake(self.currentLength, (collectionViewHeight - cellSize.height) * 0.5, cellWidth, cellSize.height);
@@ -136,7 +138,7 @@
 
 - (CGSize)collectionViewContentSize{
     if (self.currentLength != 0) {
-        if (self.delegate.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+        if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
             return CGSizeMake(self.currentLength, self.collectionView.frame.size.height);
         } else {
             return CGSizeMake(self.collectionView.frame.size.width, self.currentLength);
