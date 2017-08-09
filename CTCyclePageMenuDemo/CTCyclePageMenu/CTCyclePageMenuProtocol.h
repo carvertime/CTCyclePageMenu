@@ -24,7 +24,16 @@
 - (void)updateWithCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
 - (void)didSelectCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
 - (CGFloat)cellWidthWithCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
+
+
+@required
 + (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize spaces:(CGFloat)spaces indexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@protocol CTCyclePageSeparatorProtocol <NSObject>
+
+@optional
 + (CGSize)separatorWidthWithCellData:(id)aData collectionViewSize:(CGSize)collectionViewSize;
 
 @end

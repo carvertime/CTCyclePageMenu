@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CTCyclePageMenuProtocol.h"
 
-@interface CTCyclePageSeparatorView : UICollectionReusableView<CTCyclePageCellProtocol>
+@interface CTCyclePageSeparatorView : UICollectionReusableView<CTCyclePageSeparatorProtocol>
 
 @end
