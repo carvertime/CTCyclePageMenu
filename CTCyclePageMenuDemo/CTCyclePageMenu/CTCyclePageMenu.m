@@ -191,6 +191,7 @@
 }
 
 - (void)selectSection:(NSInteger)section animation:(BOOL)animation{
+    NSAssert(section < self.dataSource.count, @"section not find");
     [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:section] animated:animation scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
     [self p_collectionView:self.collectionView didSelectItemAtIndexpath:[NSIndexPath indexPathForItem:0 inSection:section] animation:animation];
 }

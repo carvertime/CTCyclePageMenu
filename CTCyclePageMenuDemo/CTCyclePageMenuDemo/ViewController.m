@@ -28,7 +28,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.menu selectSection:4 animation:YES];
+    [self.menu selectSection:3 animation:YES];
 }
 
 - (void)cyclePageMenu:(CTCyclePageMenu *)cyclePageMenu didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
