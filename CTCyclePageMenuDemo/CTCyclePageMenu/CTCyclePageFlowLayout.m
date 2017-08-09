@@ -39,10 +39,14 @@
     
     for (NSInteger i = 0; i < sectionNum; i++) {
         CGSize size = [delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:i]];
-        totalWidth += size.width + footerSize.width;
+        if (i == sectionNum - 1) {
+            totalWidth += size.width;
+        } else {
+            totalWidth += size.width + footerSize.width;
+        }
     }
     
-    self.currentOriginX = 0.f;
+    self.currentOriginX = 0;
     CGFloat collectionViewWidth = self.collectionView.frame.size.width;
     CGFloat cellWidth = (collectionViewWidth - (footerSize.width* (sectionNum - 1))) / sectionNum;
         
