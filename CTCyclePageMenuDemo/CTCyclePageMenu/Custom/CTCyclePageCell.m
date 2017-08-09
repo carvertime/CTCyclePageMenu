@@ -43,7 +43,7 @@
     }
 }
 
-+ (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize spaces:(CGFloat)spaces indexPath:(NSIndexPath *)indexPath{
++ (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize indexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(100, 40);
 }
 

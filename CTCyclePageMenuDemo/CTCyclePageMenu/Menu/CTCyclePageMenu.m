@@ -67,19 +67,10 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     Class cellClass = NSClassFromString(self.cellIdentifier);
-    if ([cellClass respondsToSelector:@selector(sizeForDataSource:collectionViewSize:spaces:indexPath:)]) {
-        Class separatorClass = NSClassFromString(self.separatorIdentifier);
-        CGFloat spaces = 0.f;
-        if ([separatorClass respondsToSelector:@selector(separatorWidthWithCellData:collectionViewSize:)]) {
-            spaces = [separatorClass separatorWidthWithCellData:self.dataSource collectionViewSize:self.collectionView.frame.size].width * (self.dataSource.count - 1);
-        }
-        if ([cellClass respondsToSelector:@selector(sizeForDataSource:collectionViewSize:spaces:indexPath:)]) {
-            return [cellClass sizeForDataSource:self.dataSource collectionViewSize:collectionView.frame.size spaces:spaces indexPath:indexPath];
-        } else {
-            return CGSizeZero;
-        }
+    if ([cellClass respondsToSelector:@selector(sizeForDataSource:collectionViewSize:indexPath:)]) {
+            return [cellClass sizeForDataSource:self.dataSource collectionViewSize:collectionView.frame.size indexPath:indexPath];
     } else {
-        return CGSizeZero;
+            return CGSizeZero;
     }
 }
 

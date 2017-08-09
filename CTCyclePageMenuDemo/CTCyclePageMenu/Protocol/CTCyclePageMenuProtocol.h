@@ -26,7 +26,7 @@
 
 
 @required
-+ (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize spaces:(CGFloat)spaces indexPath:(NSIndexPath *)indexPath;
++ (CGSize)sizeForDataSource:(NSArray *)dataSource collectionViewSize:(CGSize)collectionViewSize indexPath:(NSIndexPath *)indexPath;
 
 @end
 
