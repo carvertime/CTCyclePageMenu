@@ -22,11 +22,9 @@
     self.menu = [[CTCyclePageMenu alloc] initWithFrame:CGRectMake(0, 22, [UIScreen mainScreen].bounds.size.width, 44)];
     [self.menu registerDefaultClass];
     self.menu.delegate = self;
-    self.menu.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.menu.titles = @[@"title1",@"title2",@"title3",@"title4",@"title5",@"title6"];
-    //self.menu.titles = @[@"title1",@"title2",@"title3"];
-    self.menu.automaticallyAdjustsMenu = NO;
     [self.view addSubview:self.menu];
+
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

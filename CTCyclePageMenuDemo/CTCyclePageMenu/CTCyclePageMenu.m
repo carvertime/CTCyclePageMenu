@@ -19,15 +19,12 @@
 @property (nonatomic, strong) UIView <CTCyclePageSlideViewProtocol>*cyclePageSlideView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, assign) NSInteger lastSelectedSection;
-@property (nonatomic, assign, readwrite) NSInteger selectedSection;
-
 @property (nonatomic, strong) NSString *cellIdentifier;
 @property (nonatomic, strong) NSString *separatorIdentifier;
 
 @end
 
 @implementation CTCyclePageMenu
-
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
@@ -38,6 +35,7 @@
 
 - (void)setupUI{
     self.backgroundColor = [UIColor whiteColor];
+    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     [self addSubview:self.collectionView];
 }
 
@@ -65,8 +63,6 @@
         self.cyclePageSlideView.frame = CGRectMake(self.collectionView.frame.size.width - slideViewWidth, cell.frame.origin.y-self.collectionView.contentOffset.y, slideViewWidth, cell.frame.size.height);
     }
     
-    
-    
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -92,7 +88,7 @@
         [self reloadData];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-            [self p_collectionView:self.collectionView didSelectItemAtIndexpath:[NSIndexPath indexPathForItem:0 inSection:0] animation:NO];
+            [self p_collectionView:self.collectionView didSelectItemAtIndexpath:[NSIndexPath indexPathForItem:0 inSection:self.selectedSection] animation:NO];
         });
     }
 }
@@ -168,9 +164,8 @@
     }
 
     self.lastSelectedSection = indexPath.section;
-
+    
 }
-
 
 - (void)registerCellClass:(Class)cellClass{
     self.cellIdentifier = NSStringFromClass(cellClass);

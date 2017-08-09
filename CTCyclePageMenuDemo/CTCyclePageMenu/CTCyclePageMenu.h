@@ -13,7 +13,7 @@
 
 @property (nonatomic, weak) id<CTCyclePageMenuProtocol> delegate;
 @property (nonatomic, copy) void(^handleAction)(CTCyclePageMenu *cyclePageMenu, NSIndexPath *indexPath);
-@property (nonatomic, assign, readonly) NSInteger selectedSection;
+@property (nonatomic, assign) NSInteger selectedSection;
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, assign) UICollectionViewScrollDirection scrollDirection;
 @property (nonatomic, assign) BOOL automaticallyAdjustsMenu;
