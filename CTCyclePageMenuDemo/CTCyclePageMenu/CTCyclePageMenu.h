@@ -28,8 +28,6 @@
 
 - (void)registerSeparatorViewClass:(Class)separatorViewClass;
 
-- (void)registerDefaultClass;
-
 - (void)selectSection:(NSInteger)section animation:(BOOL)animation;
 
 - (void)reloadData;

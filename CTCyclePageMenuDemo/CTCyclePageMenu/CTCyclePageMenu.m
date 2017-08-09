@@ -7,9 +7,6 @@
 //
 
 #import "CTCyclePageMenu.h"
-#import "CTCyclePageSlideView.h"
-#import "CTCyclePageCell.h"
-#import "CTCyclePageSeparatorView.h"
 #import "CTCyclePageFlowLayout.h"
 
 @interface CTCyclePageMenu ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -43,32 +40,32 @@
     
     [super layoutSubviews];
     
+    UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+    
+    CGSize slideSize = CGSizeZero;
+    
+    if ([self.cyclePageSlideView respondsToSelector:@selector(slideSizeWithData:collectionViewSize:indexPath:)]) {
+        slideSize = [self.cyclePageSlideView slideSizeWithData:self.dataSource[self.selectedSection][0] collectionViewSize:self.collectionView.frame.size indexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
+    }
+    
     if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-        CGFloat slideViewHeight = 0.f;
-        if ([self.cyclePageSlideView respondsToSelector:@selector(cyclePageSlideViewHeight)]) {
-            slideViewHeight = [self.cyclePageSlideView cyclePageSlideViewHeight];
-        }
-        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - slideViewHeight);
+        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - slideSize.height);
         
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
-        self.cyclePageSlideView.frame = CGRectMake(cell.frame.origin.x-self.collectionView.contentOffset.x, self.frame.size.height - slideViewHeight, cell.frame.size.width, slideViewHeight);
+        if (!cell.window) return;
+        self.cyclePageSlideView.frame = CGRectMake(cell.frame.origin.x-self.collectionView.contentOffset.x + (cell.frame.size.width - slideSize.width) * 0.5, self.frame.size.height - slideSize.height, slideSize.width, slideSize.height);
     } else {
-        CGFloat slideViewWidth = 0.f;
-        if ([self.cyclePageSlideView respondsToSelector:@selector(cyclePageSlideViewWidth)]) {
-            slideViewWidth = [self.cyclePageSlideView cyclePageSlideViewWidth];
-        }
-        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width - slideViewWidth, self.frame.size.height);
+        self.collectionView.frame = CGRectMake(0, 0, self.frame.size.width - slideSize.width, self.frame.size.height);
         
-        UICollectionViewCell *cell = [self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.selectedSection]];
-        self.cyclePageSlideView.frame = CGRectMake(self.collectionView.frame.size.width - slideViewWidth, cell.frame.origin.y-self.collectionView.contentOffset.y, slideViewWidth, cell.frame.size.height);
+        if (!cell.window) return;
+        self.cyclePageSlideView.frame = CGRectMake(self.frame.size.width - slideSize.width, cell.frame.origin.y-self.collectionView.contentOffset.y + (cell.frame.size.height - slideSize.height) * 0.5, slideSize.width, slideSize.height);
     }
     
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     Class cellClass = NSClassFromString(self.cellIdentifier);
-    if ([cellClass respondsToSelector:@selector(sizeForDataSource:collectionViewSize:indexPath:)]) {
-            return [cellClass sizeForDataSource:self.dataSource collectionViewSize:collectionView.frame.size indexPath:indexPath];
+    if ([cellClass respondsToSelector:@selector(cellSizeWithData:collectionViewSize:indexPath:)]) {
+            return [cellClass cellSizeWithData:self.dataSource[indexPath.section][indexPath.row] collectionViewSize:self.collectionView.frame.size indexPath:indexPath];
     } else {
             return CGSizeZero;
     }
@@ -86,8 +83,8 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
     Class class = NSClassFromString(self.separatorIdentifier);
-    if ([class respondsToSelector:@selector(separatorWidthWithCellData:collectionViewSize:)]) {
-        return [class separatorWidthWithCellData:self.dataSource collectionViewSize:self.collectionView.frame.size];
+    if ([class respondsToSelector:@selector(separatorSizeWithData:collectionViewSize:)]) {
+        return [class separatorSizeWithData:self.dataSource[section] collectionViewSize:self.collectionView.frame.size];
     } else {
         return CGSizeZero;
     }
@@ -105,17 +102,17 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSAssert(self.cellIdentifier != nil, @"cellIdentifier is nil");
     UICollectionViewCell <CTCyclePageCellProtocol>*cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellIdentifier forIndexPath:indexPath];
-    if ([cell respondsToSelector:@selector(updateWithCellData:indexPath:)]) {
-        [cell updateWithCellData:self.dataSource[indexPath.section][indexPath.row] indexPath:indexPath];
+    if ([cell respondsToSelector:@selector(updateCellWithData:indexPath:)]) {
+        [cell updateCellWithData:self.dataSource[indexPath.section][indexPath.row] indexPath:indexPath];
     }
     return cell;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     NSAssert(self.separatorIdentifier != nil, @"separatorIdentifier is nil");
-    UICollectionReusableView <CTCyclePageCellProtocol>*separatorView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:self.separatorIdentifier forIndexPath:indexPath];
-    if ([separatorView respondsToSelector:@selector(updateWithCellData:indexPath:)]) {
-        [separatorView updateWithCellData:self.dataSource[indexPath.row] indexPath:indexPath];
+    UICollectionReusableView <CTCyclePageSeparatorProtocol>*separatorView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:self.separatorIdentifier forIndexPath:indexPath];
+    if ([separatorView respondsToSelector:@selector(updateSeparatorWithData:indexPath:)]) {
+        [separatorView updateSeparatorWithData:self.dataSource[indexPath.section][indexPath.row] indexPath:indexPath];
     }
     return separatorView;
 }
@@ -189,11 +186,6 @@
     [self.collectionView reloadData];
 }
 
-- (void)registerDefaultClass{
-    [self registerSlideViewClass:[CTCyclePageSlideView class]];
-    [self registerCellClass:[CTCyclePageCell class]];
-    [self registerSeparatorViewClass:[CTCyclePageSeparatorView class]];
-}
 
 - (void)selectSection:(NSInteger)section animation:(BOOL)animation{
     NSAssert(section < self.dataSource.count, @"section not find");
