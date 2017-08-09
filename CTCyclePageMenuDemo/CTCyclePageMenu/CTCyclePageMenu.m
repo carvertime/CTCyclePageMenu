@@ -200,7 +200,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [UIView animateWithDuration:0.05 animations:^{
+    [UIView animateWithDuration:0.0001 animations:^{
         [self layoutSubviews];
     }];
 }
