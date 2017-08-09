@@ -29,7 +29,13 @@
 }
 
 + (CGSize)cellSizeWithData:(id)aData collectionViewSize:(CGSize)collectionViewSize indexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, 40);
+    if (indexPath.section == 2) {
+        NSString *title = aData;
+        CGRect frame = [title boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, 20) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+        return CGSizeMake(frame.size.width+10, 40);
+    } else {
+         return CGSizeMake(100, 40);
+    }
 }
 
 - (void)setSelected:(BOOL)selected{

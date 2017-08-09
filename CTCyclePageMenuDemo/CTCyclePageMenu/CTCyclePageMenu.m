@@ -131,6 +131,10 @@
         [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
     }
     
+    if (self.lastSelectedSection != indexPath.section) {
+        [collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.lastSelectedSection] animated:YES];
+    }
+    
     self.selectedSection = indexPath.section;
     
     if (animation) {
@@ -143,11 +147,7 @@
         [self layoutSubviews];
         [self handleActionIndexPath:indexPath];
     }
-
-    if (self.lastSelectedSection != indexPath.section) {
-        [collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.lastSelectedSection] animated:YES];
-    }
-
+    
     self.lastSelectedSection = indexPath.section;
     
 }
@@ -200,8 +200,12 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self layoutSubviews];
+    [UIView animateWithDuration:0.05 animations:^{
+        [self layoutSubviews];
+    }];
 }
+
+
 
 - (UICollectionView *)collectionView{
     if (_collectionView == nil) {

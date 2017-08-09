@@ -320,8 +320,8 @@
 				TargetAttributes = {
 					699284A91F3403C100593E30 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = HG4D7RHCA9;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = H563K59824;
+						ProvisioningStyle = Manual;
 					};
 					699284C21F3403C100593E30 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -551,11 +551,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HG4D7RHCA9;
+				DEVELOPMENT_TEAM = H563K59824;
 				INFOPLIST_FILE = CTCyclePageMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Demo.com.CTCyclePageMenuDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yhd.onethestore.en;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f512a516-87f7-4b5b-a5ac-b7f39820b042";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.yhd.onethestore.en";
 			};
 			name = Debug;
 		};
@@ -563,11 +565,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = HG4D7RHCA9;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = CTCyclePageMenuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Demo.com.CTCyclePageMenuDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yhd.onethestore.en;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

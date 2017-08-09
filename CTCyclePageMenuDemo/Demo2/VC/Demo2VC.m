@@ -25,7 +25,7 @@
     [self.menu registerCellClass:[NSClassFromString(@"CTHorizontalCell") class]];
     [self.menu registerSlideViewClass:[NSClassFromString(@"CTHorizontalSlideView") class]];
     [self.menu registerSeparatorViewClass:[NSClassFromString(@"CTHorizontalSeparatorView") class]];
-    self.menu.titles = @[@"title1", @"title2", @"title3", @"title4", @"title5", @"title6"];
+    self.menu.titles = @[@"title1", @"title2", @"根据文字长度自适应title3", @"title4", @"title5", @"title6"];
     [self.view addSubview:self.menu];
 }
 
