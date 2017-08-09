@@ -12,6 +12,7 @@
 
 @protocol CTCyclePageMenuProtocol <NSObject>
 
+@optional
 - (void)cyclePageMenu:(CTCyclePageMenu *)cyclePageMenu didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 
 
@@ -20,7 +21,6 @@
 @protocol CTCyclePageCellProtocol <NSObject>
 
 @optional
-
 - (void)updateWithCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
 - (void)didSelectCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
 - (CGFloat)cellWidthWithCellData:(id)aData indexPath:(NSIndexPath *)indexPath;
@@ -31,6 +31,7 @@
 
 @protocol CTCyclePageSlideViewProtocol <NSObject>
 
+@optional
 - (CGFloat)cyclePageSlideViewHeight;
 - (CGFloat)cyclePageSlideViewWidth;
 
