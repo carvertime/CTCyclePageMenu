@@ -116,6 +116,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSAssert(self.cellIdentifier != nil, @"cellIdentifier is nil");
     UICollectionViewCell <CTCyclePageCellProtocol>*cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.cellIdentifier forIndexPath:indexPath];
     if ([cell respondsToSelector:@selector(updateWithCellData:indexPath:)]) {
         [cell updateWithCellData:self.dataSource[indexPath.section][indexPath.row] indexPath:indexPath];
@@ -124,6 +125,7 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    NSAssert(self.separatorIdentifier != nil, @"separatorIdentifier is nil");
     UICollectionReusableView <CTCyclePageCellProtocol>*separatorView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:self.separatorIdentifier forIndexPath:indexPath];
     if ([separatorView respondsToSelector:@selector(updateWithCellData:indexPath:)]) {
         [separatorView updateWithCellData:self.dataSource[indexPath.row] indexPath:indexPath];
