@@ -8,6 +8,13 @@ CTCyclePageMenu 是一个简单的模块选择菜单
 ## 示例
 
 ```objc
+
+@interface DemoVC ()<CTCyclePageMenuProtocol>
+
+@property (nonatomic, strong) CTCyclePageMenu *menu;
+
+@end
+
 @implementation DemoVC
 
 #pragma mark - 初始化CTCyclePageMenu
@@ -20,6 +27,11 @@ CTCyclePageMenu 是一个简单的模块选择菜单
     [self.menu registerSeparatorViewClass:NSClassFromString(@"CTHorizontalSeparatorView")];
     self.menu.titles = @[@"title1", @"title2", @"title3", @"title4", @"title5", @"title6"];
     [self.view addSubview:self.menu];
+}
+
+// CTCyclePageMenuProtocol代理协议方法的点击事件回调
+- (void)cyclePageMenu:(CTCyclePageMenu *)cyclePageMenu didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"点击事件回调");
 }
 
 #pragma mark - 新建一个类CTHorizontalCell
