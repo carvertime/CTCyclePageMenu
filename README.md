@@ -3,7 +3,7 @@
 CTCyclePageMenu 是一个简单的模块选择菜单
 
 ## 预览
-![image](https://github.com/carvertime/CTCyclePageMenu/blob/master/CTCyclePageMenuDemo/Resource/test.gif)
+![image](https://github.com/carvertime/CTCyclePageMenu/blob/master/CTCyclePageMenuDemo/Resource/CTCyclePageMenu.gif)
 
 ## 示例
 
