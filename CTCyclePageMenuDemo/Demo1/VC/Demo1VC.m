@@ -29,7 +29,7 @@
     [self.menu registerSeparatorViewClass:NSClassFromString(@"CTVerticalSeparatorView")];
     self.menu.delegate = self;
     self.menu.automaticallyAdjustsMenu = YES;
-    self.menu.titles = @[@"title1", @"title2", @"push", @"title4", @"title5", @"title6"];
+    self.menu.titles = @[@"title1", @"title2", @"push", @"title4", @"title5"];
     [self.view addSubview:self.menu];
 }
 

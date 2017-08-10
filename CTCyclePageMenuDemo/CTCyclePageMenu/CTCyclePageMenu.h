@@ -38,6 +38,9 @@
 /** 滚动条样式 */
 @property (nonatomic, assign) UIScrollViewIndicatorStyle indicatorStyle;
 
+/** 内容背景颜色 */
+@property (nonatomic, strong) UIColor *contentBackgroundColor;
+
 /** 注册模块视图(类型是UICollectionViewCell的子类) */
 - (void)registerCellClass:(Class)cellClass;
 

@@ -248,5 +248,10 @@
     self.collectionView.indicatorStyle = indicatorStyle;
 }
 
+- (void)setContentBackgroundColor:(UIColor *)contentBackgroundColor{
+    _contentBackgroundColor = contentBackgroundColor;
+    self.collectionView.backgroundColor = contentBackgroundColor;
+}
+
 
 @end
